@@ -2,12 +2,14 @@ var mongoose = require('mongoose');
 
 var modelsRegistro = mongoose.Schema({
     id: Number,
-    nombre: String,
-    apellido: String,
-    edad: Number,
+    name: String,
+    lastName: String,
     mail: String,
-    pass: String
-
+    pass: String,
+    date: Date,
+    category: String,
+    income: Number,
+    spends: Number
 
 });
 

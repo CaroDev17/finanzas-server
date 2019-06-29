@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 const session = require('express-session');
 
-var modelsRegistro = require("../models/RegistroUsuarios");
+var modelsRegistro = require("../models/UsersModel");
 
 router.get("/miop", function (req, res) {
   console.log('Mi operacion');
@@ -24,8 +24,8 @@ router.post("/api/nuevo", function (req, res, next) {
   console.log("--> ", req.body);
 
   var usuarioNew = new modelsRegistro({
-    nombre: req.body.nombre,
-    apellido: req.body.apellido,
+    name: req.body.name,
+    lastName: req.body.lastName,
     mail: req.body.mail,
     pass: req.body.password
   });
@@ -37,9 +37,12 @@ router.post("/api/nuevo", function (req, res, next) {
     if (error) {
       return console.error(error);
     } else {
+
+      console.log(documento);
+
       res.send(
-        `El usuario ${documento.nombre} ${
-           documento.apellido
+        `El usuario ${documento.name} ${
+           documento.lastName
          } ha sido dado de alta con el ID: ${documento._id}`
       );
     }
