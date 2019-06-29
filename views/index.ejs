@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+  <h1><%= titles %></h1>
+  <p>Welcome to <%= title %></p>
+
+  <form id="login">
+
+    <label for=""> LogIn </label> <br> <br>
+    <label> Mail </label> <br>
+    <input type="text" id="mail"> <br> <br>
+    <label> Password </label><br>
+    <input type="text" id="pass"> <br> <br>
+
+    <input type="submit" onclick=""> <label for=""> </label>
+
+
+
+
+  </form>
+  <br> <br><br> <br><br> <br><br> <br>
+
+  <form id="register">
+
+    <label for=""> Register </label> <br> <br>
+    <label> Nombre </label> <br>
+    <input type="text" id="nombre" name="nombre"> <br> <br>
+    <label> Apellido </label> <br>
+    <input type="text" id="apellido" name="apellido"> <br> <br>
+    <label> Mail </label> <br>
+    <input type="text" id="mail2" name="mail"> <br> <br>
+    <label> Password </label><br>
+    <input type="text" id="password" name="password"> <br> <br>
+
+    <input type="button" onclick="" id="altaBtn"> <label for=""> Enviar </label>
+
+
+
+
+  </form>
+
+
+
+</body>
+
+</html>
+
+
+<script>
+  var altaUsuario = function (data) {
+    alert(data);
+    console.log(data);
+    //actualizarListaUsuarios();
+  }
+
+
+  $("#altaBtn").click(function () {
+    //var data = convertirDatosFormularioAJson('myForm2')
+
+
+    var data = {
+      'nombre': document.getElementById("nombre").value,
+      'apellido': document.getElementById("apellido").value,
+      'mail': document.getElementById("mail2").value,
+      'password': document.getElementById('password').value
+    };
+    ejecutarAjax('POST', 'http://localhost:8000/index/api/nuevo', data, altaUsuario);
+  });
+
+
+  var ejecutarAjax = function (metodo, url, datosAenviar, funcionOk) {
+    $.ajax({
+      url: url,
+      type: metodo,
+      async: true,
+      data: datosAenviar,
+      timeout: 10000,
+      success: function (data) {
+        funcionOk(data);
+      },
+      error: function (error) {
+        alert(error);
+      }
+    });
+  }
+</script>
