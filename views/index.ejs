@@ -17,7 +17,7 @@
 
     <label for=""> LogIn </label> <br> <br>
     <label> Mail </label> <br>
-    <input type="text" id="mail"> <br> <br>
+    <input type="text" id="email"> <br> <br>
     <label> Password </label><br>
     <input type="text" id="pass"> <br> <br>
 
@@ -33,9 +33,9 @@
 
     <label for=""> Register </label> <br> <br>
     <label> Nombre </label> <br>
-    <input type="text" id="nombre" name="nombre"> <br> <br>
+    <input type="text" id="name" name="nombre"> <br> <br>
     <label> Apellido </label> <br>
-    <input type="text" id="apellido" name="apellido"> <br> <br>
+    <input type="text" id="lastName" name="apellido"> <br> <br>
     <label> Mail </label> <br>
     <input type="text" id="mail2" name="mail"> <br> <br>
     <label> Password </label><br>
@@ -68,9 +68,9 @@
 
 
     var data = {
-      'nombre': document.getElementById("nombre").value,
-      'apellido': document.getElementById("apellido").value,
-      'mail': document.getElementById("mail2").value,
+      'name': document.getElementById("name").value,
+      'lastName': document.getElementById("lastName").value,
+      'email': document.getElementById("mail2").value,
       'password': document.getElementById('password').value
     };
     ejecutarAjax('POST', 'http://localhost:8000/index/api/nuevo', data, altaUsuario);

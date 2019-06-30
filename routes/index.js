@@ -2,10 +2,10 @@ var express = require("express");
 var router = express.Router();
 const session = require('express-session');
 
-var modelsRegistro = require("../models/RegistroUsuarios");
+var registerModel = require("../models/UsersModel");
 
 router.get("/miop", function (req, res) {
-  console.log('Mi operacion');
+  // console.log('Mi operacion');
   res.send('Hello world');
 });
 
@@ -17,44 +17,52 @@ router.get("/", function (req, res, next) {
     title: "Ingresa a tus finanzas",
     titles: "MyAPP - MisFinanzas"
   });
-  console.log(proof);
+  //console.log(proof);
 });
 
 router.post("/api/nuevo", function (req, res, next) {
-  console.log("--> ", req.body);
+  //console.log("--> ", req.body);
 
-  var usuarioNew = new modelsRegistro({
-    nombre: req.body.nombre,
-    apellido: req.body.apellido,
-    mail: req.body.mail,
-    pass: req.body.password
+  var usuarioNew = new registerModel({
+    name: req.body.name,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    password: req.body.password
   });
   // res.send('Usuario de Alta');
 
-  console.log("Llego este mensaje ", usuarioNew);
+  //console.log("Llego este mensaje ", usuarioNew);
 
   usuarioNew.save(function (error, documento) {
     if (error) {
       return console.error(error);
     } else {
-      res.send(
-        `El usuario ${documento.nombre} ${
-           documento.apellido
-         } ha sido dado de alta con el ID: ${documento._id}`
-      );
-    }
-  });
 
+      // console.log(documento);
+
+      // res.send(
+      //   `El usuario ${documento.name} ${
+      //      documento.lastName
+      //    } ha sido dado de alta con el ID: ${documento._id}`
+      // );
+
+      console.log('Usuario dado de Alta');
+      res.redirect('/index');
+
+    }
+
+
+  });
 
 });
 
 router.get("/api/login", function (req, res) {
 
-  console.log('mail-> ', req.body.mail);
+  console.log('mail-> ', req.body.email);
   console.log('pass-> ', req.body.pass);
-
-  modelsRegistro.find({
-    mail: req.body.mail,
+  c
+  registerModel.find({
+    email: req.body.email,
     pass: req.body.pass
   }, function (error, documento) {
     if (error) {
