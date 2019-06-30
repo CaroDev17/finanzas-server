@@ -40,14 +40,19 @@ router.post("/api/nuevo", function (req, res, next) {
 
       // console.log(documento);
 
-      res.send(
-        `El usuario ${documento.name} ${
-           documento.lastName
-         } ha sido dado de alta con el ID: ${documento._id}`
-      );
-    }
-  });
+      // res.send(
+      //   `El usuario ${documento.name} ${
+      //      documento.lastName
+      //    } ha sido dado de alta con el ID: ${documento._id}`
+      // );
 
+      console.log('Usuario dado de Alta');
+      res.redirect('/index');
+
+    }
+
+
+  });
 
 });
 
