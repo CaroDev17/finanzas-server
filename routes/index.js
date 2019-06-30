@@ -60,7 +60,7 @@ router.get("/api/login", function (req, res) {
 
   console.log('mail-> ', req.body.email);
   console.log('pass-> ', req.body.pass);
-  c
+
   registerModel.find({
     email: req.body.email,
     pass: req.body.pass
@@ -92,4 +92,42 @@ router.get("/api/login", function (req, res) {
 
 });
 
+
+router.post("/api/income", function (req, res) {
+
+  console.log('date in string ', req.body.date);
+  console.log('date parsed ', Date.parse(req.body.date));
+
+  var incomesNew = new registerModel({
+    date: Date.parse(req.body.date),
+    category: req.body.category,
+    income: req.body.income
+
+
+  })
+
+  incomesNew.save(function (error, documento) {
+    if (error) {
+      return console.error(error);
+    } else {
+
+      // console.log(documento);
+
+      // res.send(
+      //   `El usuario ${documento.name} ${
+      //      documento.lastName
+      //    } ha sido dado de alta con el ID: ${documento._id}`
+      // );
+
+      console.log('Add Incomes', documento);
+      res.send(documento);
+
+
+    }
+
+
+
+  })
+
+})
 module.exports = router;
