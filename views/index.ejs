@@ -17,7 +17,7 @@
 
     <label for=""> LogIn </label> <br> <br>
     <label> Mail </label> <br>
-    <input type="text" id="mail"> <br> <br>
+    <input type="text" id="email"> <br> <br>
     <label> Password </label><br>
     <input type="text" id="pass"> <br> <br>
 
@@ -70,7 +70,7 @@
     var data = {
       'name': document.getElementById("name").value,
       'lastName': document.getElementById("lastName").value,
-      'mail': document.getElementById("mail2").value,
+      'email': document.getElementById("mail2").value,
       'password': document.getElementById('password').value
     };
     ejecutarAjax('POST', 'http://localhost:8000/index/api/nuevo', data, altaUsuario);

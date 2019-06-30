@@ -2,10 +2,10 @@ var express = require("express");
 var router = express.Router();
 const session = require('express-session');
 
-var modelsRegistro = require("../models/UsersModel");
+var registerModel = require("../models/UsersModel");
 
 router.get("/miop", function (req, res) {
-  console.log('Mi operacion');
+  // console.log('Mi operacion');
   res.send('Hello world');
 });
 
@@ -17,28 +17,28 @@ router.get("/", function (req, res, next) {
     title: "Ingresa a tus finanzas",
     titles: "MyAPP - MisFinanzas"
   });
-  console.log(proof);
+  //console.log(proof);
 });
 
 router.post("/api/nuevo", function (req, res, next) {
-  console.log("--> ", req.body);
+  //console.log("--> ", req.body);
 
-  var usuarioNew = new modelsRegistro({
+  var usuarioNew = new registerModel({
     name: req.body.name,
     lastName: req.body.lastName,
-    mail: req.body.mail,
-    pass: req.body.password
+    email: req.body.email,
+    password: req.body.password
   });
   // res.send('Usuario de Alta');
 
-  console.log("Llego este mensaje ", usuarioNew);
+  //console.log("Llego este mensaje ", usuarioNew);
 
   usuarioNew.save(function (error, documento) {
     if (error) {
       return console.error(error);
     } else {
 
-      console.log(documento);
+      // console.log(documento);
 
       res.send(
         `El usuario ${documento.name} ${
@@ -53,11 +53,11 @@ router.post("/api/nuevo", function (req, res, next) {
 
 router.get("/api/login", function (req, res) {
 
-  console.log('mail-> ', req.body.mail);
+  console.log('mail-> ', req.body.email);
   console.log('pass-> ', req.body.pass);
-
-  modelsRegistro.find({
-    mail: req.body.mail,
+  c
+  registerModel.find({
+    email: req.body.email,
     pass: req.body.pass
   }, function (error, documento) {
     if (error) {

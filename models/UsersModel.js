@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
 
-var modelsRegistro = mongoose.Schema({
+var registerModel = mongoose.Schema({
     id: Number,
     name: String,
     lastName: String,
-    mail: String,
-    pass: String,
+    email: String,
+    password: String,
     date: Date,
     category: String,
     income: Number,
@@ -13,4 +13,4 @@ var modelsRegistro = mongoose.Schema({
 
 });
 
-module.exports = mongoose.model('usuarios', modelsRegistro);
+module.exports = mongoose.model('usuarios', registerModel);
